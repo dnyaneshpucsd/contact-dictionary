@@ -8,6 +8,24 @@ import com.pucsd.cd.model.Contact;
 import com.pucsd.cd.service.ContactDictionaryService;
 import com.pucsd.cd.service.impl.ContactDictionaryServiceImpl;
 
+/**
+ * Main class to run dictionary application
+ * 
+ * Assumption / constrain :
+ * The application will be run in single thread. it doesn't support concurrency
+ * add allows multiple entries for same contact in contact dictionary.
+ * allowed characters in contacts are 'a-z', 'A-Z', '0-9', ' ' and '.'
+ * contact can't be more than 50 characters.
+ * prefix and suffix spaces of contact are ignored while adding into dictionary
+ * all contacts are store in dictionary in lower case format
+ * provided factory methods to create contact object for user input. it validates user input before creating object
+ * search supports search by first name / full name / last name.
+ * 
+ * @author dnyanesh
+ *
+ */
+
+
 public class ContactDictionaryMain {
 
 	@SuppressWarnings("resource")
