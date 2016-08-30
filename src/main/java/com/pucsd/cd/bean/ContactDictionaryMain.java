@@ -12,7 +12,7 @@ import com.pucsd.cd.service.impl.ContactDictionaryServiceImpl;
  * Main class to run dictionary application
  * 
  * Assumption / constrain :
- * The application will be run in single thread. it doesn't support concurrency
+ * it doesn't support concurrency.
  * add allows multiple entries for same contact in contact dictionary.
  * allowed characters in contacts are 'a-z', 'A-Z', '0-9', ' ' and '.'
  * contact can't be more than 50 characters.
