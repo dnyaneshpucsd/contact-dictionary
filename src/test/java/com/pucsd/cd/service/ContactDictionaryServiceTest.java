@@ -304,22 +304,19 @@ public class ContactDictionaryServiceTest {
 		Assert.assertTrue(searchList.size() == 1);
 		Assert.assertEquals(c20, searchList.get(0));
 
+		
 		// search for prefix
 		searchList = contactDictionary.search("d");
 		
 		Assert.assertTrue(searchList.size() == 18);
 		// first result "d dnyanesh.Pucsd" (c31) first name  exact match	
 		Assert.assertEquals(c31, searchList.get(0));
-	
 		// second result "dnyanesh.Pucsd d" (c25) last name exact match 	
 		Assert.assertEquals(c25, searchList.get(1));
-	
 		// third result "deepak Pucsd" (c17) first name prefix match + sorting	
 		Assert.assertEquals(c17, searchList.get(2));
-	
 		// fourth result "deepesh Puc" (c18) first name prefix match + sorting
 		Assert.assertEquals(c18, searchList.get(3));
-
 		// fifth result "dn dnyanesh.Pucsd" (c30) first name prefix match + sorting
 		Assert.assertEquals(c30, searchList.get(4));
 

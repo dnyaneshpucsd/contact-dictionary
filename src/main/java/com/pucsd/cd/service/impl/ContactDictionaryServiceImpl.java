@@ -13,6 +13,33 @@ import com.pucsd.cd.service.ContactDictionaryService;
 
 /**
  *  Implementation of  <code> ContactDictionaryService </code>.
+ *<p>
+ * Implemented API:
+ * <ul>
+ *  <li> <strong>add </strong> API add each contact in dictionary two times 
+ *    one for full contact (first name + space + last name) and 
+ *    one for last name if last name is present. 
+ *    full contact entry is used to search by by first name or full contact and 
+ *    last name entry is used to search by last name.
+ *    it doesn't perform any duplicate check. 
+ * <br>
+ * 
+ *  	
+ *  <li> <strong>search </strong> API implemented algorithm <br>
+ *
+ * traverse dictionary tree for each character in searchText. 
+ *  if node is not found for current character, 
+ *    return empty list.
+ * if node is found for current character and character is not last character in search text.
+ *    recursive call with found node as dictionary and incremented char position.
+ * if character is last character in search text 
+ * 	  get reference node, 
+ *    build first name / full name and last name exact match result,
+ *    build full name and last name prefix match result by traversing whole dictionary subtree rooted at node.
+ *    prefix match result sorted by full contact are appended to exact match result
+ * </p>
+ *   
+ *  dictionary entries for same contact
  * @author dnyanesh
  *
  */
@@ -411,7 +438,14 @@ public class ContactDictionaryServiceImpl implements ContactDictionaryService {
 	
 		return null;
 	}
-	
+
+	/**
+	 * Method to traverse whole tree rooted at node and return contacts for each valid path.  
+	 * @param node root of subtree 
+	 * @param searchText input search text
+	 * @param pathText pathtext text formed from each character from root to till. 
+	 * @return list of contacts.
+	 */
 	private List<Contact> getPrefixMatchContacts(ContactDictionaryNode node,
 			String searchText, String pathText)  {
 		
